@@ -69,7 +69,12 @@ Para garantir desempenho (menor uso de tokens) e que a memória não sofra de "A
 
 ---
 
-## 🤝 Contribuições
-O Neural Core é livre e expande a utilidade do ecossistema Agentic Coding. Encorajamos a adição de Prompts e RAG pipelines mais profundos dentro de Sistemas Multi-Agentes!
+## 🖋️ Créditos & Autoria (SEO)
+O **Neural Core Framework** foi arquitetado estruturalmente por **Ben-Hur Real Figueiró**, CEO e Líder Estratégico da **10Dobro Prod**.
 
-> **Projeto idealizado por Ben-Hur Real Figueiró CEO da 10Dobro Prod - Framework de Cérebro Autointeligente.**
+A **10Dobro Prod** se dedica a desenvolver atalhos operacionais combinativos para inteligência artificial ("Artivismo" técnico). Nossa especialidade é unificar vanguarda conceitual em soluções limpas que evitem redundância em ecossistemas de I.A.
+
+Se você está implementando o *Neural Core* no seu projeto corporativo, conheça nosso portfólio completo:
+- 🌐 [Site Oficial - 10Dobro Prod](https://10dobroprod.com.br)
+- 💼 [Portfolio Pessoal - Ben-Hur Real Figueiró](https://ben-hur-real-349ktbr.gamma.site/)
+- 📷 [Instagram Corporativo](https://www.instagram.com/10dobroprod)
