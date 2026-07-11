@@ -29,6 +29,7 @@ process.stdin.on('end', () => {
     const transcript = data.transcript || [];
 
     const learnings = [];
+    const tasks = [];
     for (const turn of transcript) {
       if (turn.role !== 'assistant') continue;
       const content = Array.isArray(turn.content)
@@ -38,10 +39,27 @@ process.stdin.on('end', () => {
       for (const m of matches) {
         learnings.push({ type: m[1].toUpperCase(), text: m[2].trim() });
       }
+      // Conscious diary: [[NEURAL_CORE_TASK: what was done]] → task_history.md
+      const taskMatches = [...content.matchAll(/\[\[NEURAL_CORE_TASK:\s*(.+?)\]\]/gis)];
+      for (const m of taskMatches) tasks.push(m[1].trim());
+    }
+
+    const todayISO = new Date().toISOString().split('T')[0];
+
+    // --- Conscious: append the diary of what we did ---
+    if (tasks.length) {
+      const TASK_HISTORY = path.join(MEM_DIR, 'task_history.md');
+      try {
+        let th = fs.readFileSync(TASK_HISTORY, 'utf8');
+        const entry = `\n\n---\n\n## [${todayISO}] Session (auto)\n\n` + tasks.map(t => `- ${t}`).join('\n') + '\n';
+        fs.writeFileSync(TASK_HISTORY, th.trimEnd() + entry, 'utf8');
+      } catch { /* no task_history yet: skip, don't block lesson save */ }
     }
 
     if (learnings.length === 0) {
-      process.stdout.write('Neural Core: no new lessons this session.');
+      process.stdout.write(tasks.length
+        ? `Neural Core: ${tasks.length} diary entr(ies) saved to task_history.`
+        : 'Neural Core: nothing new to save.');
       process.exit(0);
     }
 

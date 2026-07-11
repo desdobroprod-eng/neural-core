@@ -61,6 +61,14 @@ When the agent learns something durable it emits a marker in its reasoning; the 
 
 Types: `SOP` · `AVERSION` · `MILESTONE` (aliases: `AVERSAO`, `REGRA`, `MARCO`).
 
+**Diary (conscious):** to record *what was done* (not a lesson) into `task_history.md`, emit:
+
+```
+[[NEURAL_CORE_TASK: shipped 13 badges to prod; 3D hero perf still pending]]
+```
+
+The Stop hook appends these under a dated `## [YYYY-MM-DD] Session (auto)` heading, so the next session's load hook restores exactly where you stopped.
+
 ## Tuning (env vars)
 
 - `NEURAL_CORE_DIR` — memory folder (default `~/neural-core-memory`)
